@@ -15,6 +15,7 @@ namespace Unit05.Game.Directing
     public class Director
     {
         private VideoService _videoService = null;
+        private Action
 
         /// <summary>
         /// Constructs a new instance of Director using the given KeyboardService and VideoService.
