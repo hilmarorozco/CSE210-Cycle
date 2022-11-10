@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Unit05.Game.Casting;
 using Unit05.Game.Scripting;
 using Unit05.Game.Services;
+using Action = Unit05.Game.Scripting.Action;
 
 namespace Unit05.Game.Directing
 {
