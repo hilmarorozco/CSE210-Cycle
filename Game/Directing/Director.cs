@@ -3,7 +3,6 @@ using Unit05.Game.Casting;
 using Unit05.Game.Scripting;
 using Unit05.Game.Services;
 
-
 namespace Unit05.Game.Directing
 {
     /// <summary>
@@ -15,7 +14,6 @@ namespace Unit05.Game.Directing
     public class Director
     {
         private VideoService _videoService = null;
-        private Action
 
         /// <summary>
         /// Constructs a new instance of Director using the given KeyboardService and VideoService.
@@ -52,7 +50,7 @@ namespace Unit05.Game.Directing
         private void ExecuteActions(string group, Cast cast, Script script)
         {
             List<Action> actions = script.GetActions(group);
-            foreach(Action action in actions)
+            foreach (Action action in actions)
             {
                 action.Execute(cast, script);
             }
