@@ -33,7 +33,7 @@ namespace Unit05.Game.Scripting
         {
             if (_isGameOver == false)
             {
-                HandleFoodCollisions(cast);
+                HandleIncrement(cast);
                 HandleSegmentCollisions(cast);
                 HandleGameOver(cast);
             }
@@ -44,7 +44,7 @@ namespace Unit05.Game.Scripting
         /// </summary>
         /// <param name="cast">The cast of actors.</param>
 
-        private void HandleFoodCollisions(Cast cast)
+        private void HandleIncrement(Cast cast)
         {
             CycleA cycleA = (CycleA)cast.GetFirstActor("cycleA");
             CycleB cycleB = (CycleB)cast.GetFirstActor("cycleB");
@@ -52,13 +52,18 @@ namespace Unit05.Game.Scripting
             ScoreA scoreA = (ScoreA)cast.GetFirstActor("scoreA");
             ScoreB scoreB = (ScoreB)cast.GetFirstActor("scoreB");
 
+            // private int increment = 1;
+            cycleA.GrowTail(1);
+            cycleB.GrowTail(1);            
+
+            
             //Food food = (Food)cast.GetFirstActor("food");
             
-            for (int i = 0; i <= 10; i = i + 2)
-            {
-                cycleA.GrowTail(1);
-                cycleB.GrowTail(1);
-            }
+            // for (int i = 0; i <= 10; i = i + 1)
+            // {
+            //     cycleA.GrowTail(1);
+            //     cycleB.GrowTail(1);
+            // }
         }
 
         /// <summary>
@@ -67,20 +72,20 @@ namespace Unit05.Game.Scripting
         /// <param name="cast">The cast of actors.</param>
         private void HandleSegmentCollisions(Cast cast)
         {
-            CycleA cycleA = (CycleA)cast.GetFirstActor("snake");
+            CycleA cycleA = (CycleA)cast.GetFirstActor("cycleA");
             Actor headA = cycleA.GetHead();
             List<Actor> bodyA = cycleA.GetBody();
 
-            CycleB cycleB = (CycleB)cast.GetFirstActor("snake");
+            CycleB cycleB = (CycleB)cast.GetFirstActor("cycleB");
             Actor headB = cycleB.GetHead();
             List<Actor> bodyB = cycleB.GetBody();
 
             foreach (Actor segmentA in bodyA)
             {
-                if (segmentA.GetPosition().Equals(headB.GetPosition()))
-                {
-                    _isGameOver = true;
-                }
+                // if (segmentA.GetPosition().Equals(headB.GetPosition()))
+                // {
+                //     _isGameOver = true;
+                // }
                 if (segmentA.GetPosition().Equals(headA.GetPosition()))
                 {
                     _isGameOver = true;
@@ -93,10 +98,10 @@ namespace Unit05.Game.Scripting
                 {
                     _isGameOver = true;
                 }
-                if (segmentB.GetPosition().Equals(headB.GetPosition()))
-                {
-                    _isGameOver = true;
-                }
+                // if (segmentB.GetPosition().Equals(headB.GetPosition()))
+                // {
+                //     _isGameOver = true;
+                // }
             }
         }
 
@@ -104,10 +109,10 @@ namespace Unit05.Game.Scripting
         {
             if (_isGameOver == true)
             {
-                CycleA cycleA = (CycleA)cast.GetFirstActor("snake");
+                CycleA cycleA = (CycleA)cast.GetFirstActor("cycleA");
                 List<Actor> segmentsA = cycleA.GetSegments();
                 //Food food = (Food)cast.GetFirstActor("food");
-                CycleB cycleB = (CycleB)cast.GetFirstActor("snake");
+                CycleB cycleB = (CycleB)cast.GetFirstActor("cycleB");
                 List<Actor> segmentsB = cycleB.GetSegments();
                 //Food food = (Food)cast.GetFirstActor("food");
 
@@ -121,12 +126,18 @@ namespace Unit05.Game.Scripting
                 message.SetPosition(position);
                 cast.AddActor("messages", message);
 
-                // // make everything white
-                // foreach (Actor segment in segments)
-                // {
-                //     segment.SetColor(Constants.WHITE);
-                // }
-                // //food.SetColor(Constants.WHITE);
+                // make everything white
+                foreach (Actor segment in segmentsA)
+                {
+                    segment.SetColor(Constants.WHITE);
+                }
+                foreach (Actor segment in segmentsB)
+                {
+                    segment.SetColor(Constants.WHITE);
+                }
+                
+                
+                //food.SetColor(Constants.WHITE);
             }
         }
 
