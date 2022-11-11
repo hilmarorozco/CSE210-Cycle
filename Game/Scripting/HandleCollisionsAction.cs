@@ -19,6 +19,7 @@ namespace Unit05.Game.Scripting
         private bool _isGameOver = false;
         private bool deadCycleA = false;
         private bool deadCycleB = false;
+        private int i = 0;
 
         /// <summary>
         /// Constructs a new instance of HandleCollisionsAction.
@@ -32,7 +33,7 @@ namespace Unit05.Game.Scripting
         {
             if (_isGameOver == false)
             {
-                //HandleFoodCollisions(cast);
+                HandleFoodCollisions(cast);
                 HandleSegmentCollisions(cast);
                 HandleGameOver(cast);
             }
@@ -43,20 +44,22 @@ namespace Unit05.Game.Scripting
         /// </summary>
         /// <param name="cast">The cast of actors.</param>
 
-        // private void HandleFoodCollisions(Cast cast)
-        // {
-        //     Cycle snake = (Cycle)cast.GetFirstActor("snake");
-        //     Score score = (Score)cast.GetFirstActor("score");
-        //     Food food = (Food)cast.GetFirstActor("food");
+        private void HandleFoodCollisions(Cast cast)
+        {
+            CycleA cycleA = (CycleA)cast.GetFirstActor("cycleA");
+            CycleB cycleB = (CycleB)cast.GetFirstActor("cycleB");
+
+            ScoreA scoreA = (ScoreA)cast.GetFirstActor("scoreA");
+            ScoreB scoreB = (ScoreB)cast.GetFirstActor("scoreB");
+
+            //Food food = (Food)cast.GetFirstActor("food");
             
-        //     if (snake.GetHead().GetPosition().Equals(food.GetPosition()))
-        //     {
-        //         int points = food.GetPoints();
-        //         snake.GrowTail(points);
-        //         score.AddPoints(points);
-        //         food.Reset();
-        //     }
-        // }
+            for (int i = 0; i <= 10; i = i + 2)
+            {
+                cycleA.GrowTail(1);
+                cycleB.GrowTail(1);
+            }
+        }
 
         /// <summary>
         /// Sets the game over flag if the snake collides with one of its segments.
