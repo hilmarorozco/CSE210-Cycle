@@ -17,8 +17,8 @@ namespace Unit05.Game.Scripting
     public class HandleCollisionsAction : Action
     {
         private bool _isGameOver = false;
-        private bool deadCycleA = false;
-        private bool deadCycleB = false;
+        private bool winnerCycleA = false;
+        private bool winnerCycleB = false;
         private int i = 0;
 
         /// <summary>
@@ -82,13 +82,15 @@ namespace Unit05.Game.Scripting
 
             foreach (Actor segmentA in bodyA)
             {
-                // if (segmentA.GetPosition().Equals(headB.GetPosition()))
-                // {
-                //     _isGameOver = true;
-                // }
+                if (segmentA.GetPosition().Equals(headB.GetPosition()))
+                {
+                    _isGameOver = true;
+                    winnerCycleA = true;
+                }
                 if (segmentA.GetPosition().Equals(headA.GetPosition()))
                 {
                     _isGameOver = true;
+                    winnerCycleB = true;
                 }
             }
 
@@ -97,11 +99,13 @@ namespace Unit05.Game.Scripting
                 if (segmentB.GetPosition().Equals(headA.GetPosition()))
                 {
                     _isGameOver = true;
+                    winnerCycleB = true; 
                 }
-                // if (segmentB.GetPosition().Equals(headB.GetPosition()))
-                // {
-                //     _isGameOver = true;
-                // }
+                if (segmentB.GetPosition().Equals(headB.GetPosition()))
+                {
+                    _isGameOver = true;
+                    winnerCycleA = true;
+                }
             }
         }
 
@@ -116,28 +120,60 @@ namespace Unit05.Game.Scripting
                 List<Actor> segmentsB = cycleB.GetSegments();
                 //Food food = (Food)cast.GetFirstActor("food");
 
-                // create a "game over" message
-                int x = Constants.MAX_X / 2;
-                int y = Constants.MAX_Y / 2;
-                Point position = new Point(x, y);
+                
+                if (winnerCycleA == true){
+                    // create a "game over" message
+                    int x = Constants.MAX_X / 8;
+                    int y = Constants.MAX_Y / 2;
+                    Point position = new Point(x, y);
 
-                Actor message = new Actor();
-                message.SetText("Game Over!");
-                message.SetPosition(position);
-                cast.AddActor("messages", message);
+                    Actor message = new Actor();
+                    message.SetFontSize(50);
+                    message.SetColor(Constants.RED);
+                    message.SetText("Game Over! Red Cycle Wins!");
+                    message.SetPosition(position);
+                    cast.AddActor("messages", message);       
 
-                // make everything white
-                foreach (Actor segment in segmentsA)
-                {
-                    segment.SetColor(Constants.WHITE);
-                }
                 foreach (Actor segment in segmentsB)
-                {
-                    segment.SetColor(Constants.WHITE);
+                    {
+                        segment.SetColor(Constants.WHITE);
+                    }
+
                 }
+                else if (winnerCycleB == true){
+                    // create a "game over" message
+                    int x = Constants.MAX_X / 8;
+                    int y = Constants.MAX_Y / 2;
+                    Point position = new Point(x, y);
+
+                    Actor message = new Actor();
+                    message.SetFontSize(50);
+                    message.SetColor(Constants.BLUE);
+                    message.SetText("Game Over! Blue Cycle Wins!");
+                    message.SetPosition(position);
+                    cast.AddActor("messages", message);     
+
+                    foreach (Actor segment in segmentsA)
+                    {
+                        segment.SetColor(Constants.WHITE);
+                    }              
+                }
+
+
+
+
+                // // make everything white
+                // foreach (Actor segment in segmentsA)
+                // {
+                //     segment.SetColor(Constants.WHITE);
+                // }
+                // foreach (Actor segment in segmentsB)
+                // {
+                //     segment.SetColor(Constants.WHITE);
+                // }
                 
                 
-                //food.SetColor(Constants.WHITE);
+                
             }
         }
 
