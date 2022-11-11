@@ -19,9 +19,11 @@ namespace Unit05
         {
             // create the cast
             Cast cast = new Cast();
-            cast.AddActor("food", new Food());
-            cast.AddActor("snake", new Cycle());
-            cast.AddActor("score", new Score());
+            cast.AddActor("cycleA", new CycleA());
+            cast.AddActor("cycleB", new CycleB());
+            cast.AddActor("scoreA", new ScoreA());
+            cast.AddActor("scoreB", new ScoreB());
+
 
             // create the services
             KeyboardService keyboardService = new KeyboardService();
@@ -29,7 +31,8 @@ namespace Unit05
            
             // create the script
             Script script = new Script();
-            script.AddAction("input", new ControlActorsAction(keyboardService));
+            script.AddAction("input", new ControlActorsActionA(keyboardService));
+            script.AddAction("input", new ControlActorsActionB(keyboardService));
             script.AddAction("update", new MoveActorsAction());
             script.AddAction("update", new HandleCollisionsAction());
             script.AddAction("output", new DrawActorsAction(videoService));
