@@ -31,50 +31,50 @@ namespace Unit05.Game.Scripting
             // left
             if (_keyboardService.IsKeyDown("a"))
             {
-                _directionB = new Point(-Constants.CELL_SIZE, 0);
+                _directionA = new Point(-Constants.CELL_SIZE, 0);
             }
 
             // right
             if (_keyboardService.IsKeyDown("d"))
             {
-                _directionB = new Point(Constants.CELL_SIZE, 0);
+                _directionA = new Point(Constants.CELL_SIZE, 0);
             }
 
             // up
             if (_keyboardService.IsKeyDown("w"))
             {
-                _directionB = new Point(0, -Constants.CELL_SIZE);
+                _directionA = new Point(0, -Constants.CELL_SIZE);
             }
 
             // down
             if (_keyboardService.IsKeyDown("s"))
             {
-                _directionB = new Point(0, Constants.CELL_SIZE);
+                _directionA = new Point(0, Constants.CELL_SIZE);
             }
 
 
             // left
             if (_keyboardService.IsKeyDown("j"))
             {
-                _directionA = new Point(-Constants.CELL_SIZE, 0);
+                _directionB = new Point(-Constants.CELL_SIZE, 0);
             }
 
             // right
             if (_keyboardService.IsKeyDown("l"))
             {
-                _directionA = new Point(Constants.CELL_SIZE, 0);
+                _directionB = new Point(Constants.CELL_SIZE, 0);
             }
 
             // up
             if (_keyboardService.IsKeyDown("i"))
             {
-                _directionA = new Point(0, -Constants.CELL_SIZE);
+                _directionB = new Point(0, -Constants.CELL_SIZE);
             }
 
             // down
             if (_keyboardService.IsKeyDown("k"))
             {
-                _directionA = new Point(0, Constants.CELL_SIZE);
+                _directionB = new Point(0, Constants.CELL_SIZE);
             }
 
             CycleB cycleB = (CycleB)cast.GetFirstActor("cycleB");
