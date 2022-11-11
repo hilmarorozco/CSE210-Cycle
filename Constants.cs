@@ -28,5 +28,7 @@ namespace Unit05.Game
         public static Color YELLOW = new Color(255, 255, 0);
         public static Color GREEN = new Color(0, 255, 0);
         public static Color BLUE = new Color(0, 0, 255);
+        public static Color LIGHTBLUE = new Color(51, 153, 255);
+        public static Color LIGHTRED = new Color(255, 51, 255);
     }
 }

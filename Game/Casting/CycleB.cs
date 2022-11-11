@@ -64,7 +64,7 @@ namespace Unit05.Game.Casting
                 segment.SetPosition(position);
                 segment.SetVelocity(velocity);
                 segment.SetText("#");
-                segment.SetColor(Constants.BLUE);
+                segment.SetColor(Constants.LIGHTBLUE);
                 _segments.Add(segment);
             }
         }
@@ -108,7 +108,7 @@ namespace Unit05.Game.Casting
                 Point position = new Point(x - i * Constants.CELL_SIZE, y);
                 Point velocity = new Point(1 * Constants.CELL_SIZE, 0);
                 string text = i == 0 ? "8" : "#";
-                Color color = i == 0 ? Constants.BLUE : Constants.BLUE;
+                Color color = i == 0 ? Constants.BLUE : Constants.LIGHTBLUE;
 
                 Actor segment = new Actor();
                 segment.SetPosition(position);
