@@ -9,14 +9,14 @@ namespace Unit05.Game.Casting
     /// The responsibility of Food is to select a random position and points that it's worth.
     /// </para>
     /// </summary>
-    public class Score : Actor
+    public class ScoreA : Actor
     {
         private int _points = 0;
 
         /// <summary>
         /// Constructs a new instance of an Food.
         /// </summary>
-        public Score()
+        public ScoreA()
         {
             AddPoints(0);
         }
@@ -28,7 +28,7 @@ namespace Unit05.Game.Casting
         public void AddPoints(int points)
         {
             this._points += points;
-            SetText($"Score: {this._points}");
+            SetText($"ScoreA: {this._points}");
         }
     }
 }
