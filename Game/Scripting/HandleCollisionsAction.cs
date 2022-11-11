@@ -17,6 +17,8 @@ namespace Unit05.Game.Scripting
     public class HandleCollisionsAction : Action
     {
         private bool _isGameOver = false;
+        private bool deadCycleA = false;
+        private bool deadCycleB = false;
 
         /// <summary>
         /// Constructs a new instance of HandleCollisionsAction.
@@ -30,7 +32,7 @@ namespace Unit05.Game.Scripting
         {
             if (_isGameOver == false)
             {
-                HandleFoodCollisions(cast);
+                //HandleFoodCollisions(cast);
                 HandleSegmentCollisions(cast);
                 HandleGameOver(cast);
             }
@@ -80,7 +82,7 @@ namespace Unit05.Game.Scripting
             {
                 Cycle snake = (Cycle)cast.GetFirstActor("snake");
                 List<Actor> segments = snake.GetSegments();
-                Food food = (Food)cast.GetFirstActor("food");
+                //Food food = (Food)cast.GetFirstActor("food");
 
                 // create a "game over" message
                 int x = Constants.MAX_X / 2;
@@ -97,7 +99,7 @@ namespace Unit05.Game.Scripting
                 {
                     segment.SetColor(Constants.WHITE);
                 }
-                food.SetColor(Constants.WHITE);
+                //food.SetColor(Constants.WHITE);
             }
         }
 

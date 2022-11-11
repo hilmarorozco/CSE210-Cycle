@@ -24,16 +24,24 @@ namespace Unit05.Game.Scripting
         /// <inheritdoc/>
         public void Execute(Cast cast, Script script)
         {
-            Cycle cycle = (Cycle)cast.GetFirstActor("snake");
-            List<Actor> segments = cycle.GetSegments();
-            Actor score = cast.GetFirstActor("score");
-            Actor food = cast.GetFirstActor("food");
+            CycleA cycleA = (CycleA)cast.GetFirstActor("snake");
+            List<Actor> segmentsA = cycleA.GetSegments();
+
+            CycleB cycleB = (CycleB)cast.GetFirstActor("snake");
+            List<Actor> segmentsB = cycleB.GetSegments();
+
+            Actor scoreA = cast.GetFirstActor("score");
+            Actor scoreB = cast.GetFirstActor("score");
+
+            //Actor food = cast.GetFirstActor("food");
             List<Actor> messages = cast.GetActors("messages");
             
             _videoService.ClearBuffer();
-            _videoService.DrawActors(segments);
-            _videoService.DrawActor(score);
-            _videoService.DrawActor(food);
+            _videoService.DrawActors(segmentsA);
+            _videoService.DrawActors(segmentsB);
+            _videoService.DrawActor(scoreA);
+            _videoService.DrawActor(scoreB);
+            //_videoService.DrawActor(food);
             _videoService.DrawActors(messages);
             _videoService.FlushBuffer();
         }
