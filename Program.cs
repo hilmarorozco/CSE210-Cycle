@@ -2,6 +2,7 @@
 using Unit05.Game.Directing;
 using Unit05.Game.Scripting;
 using Unit05.Game.Services;
+using Unit05.Game;
 
 
 namespace Unit05
@@ -17,12 +18,28 @@ namespace Unit05
         /// <param name="args">The given arguments.</param>
         static void Main(string[] args)
         {
+            Cycle cycleA = new Cycle();
+            cycleA.PrepareBody(new Point(-225,150), Constants.RED);
+            
+            
+            Cycle cycleB = new Cycle();
+            cycleB.PrepareBody(new Point(225,150), Constants.BLUE);
+            
+            
+
+            //cycleB.GrowTail(Constants.LIGHTBLUE);
+            // cycleA.PrepareBody(new Point((Constants.MAX_X/(-4)),(Constants.MAX_X/2)), Constants.LIGHTRED);
+            // cycleB.PrepareBody(new Point((Constants.MAX_X/(4)),(Constants.MAX_X/2)), Constants.LIGHTBLUE);
+            
+            
+            
+
             // create the cast
             Cast cast = new Cast();
-            cast.AddActor("cycleA", new CycleA());
-            cast.AddActor("cycleB", new CycleB());
-            cast.AddActor("scoreA", new ScoreA());
-            cast.AddActor("scoreB", new ScoreB());
+            cast.AddActor("cycleA", cycleA);
+            cast.AddActor("cycleB", cycleB);
+            // cast.AddActor("scoreA", new ScoreA());
+            // cast.AddActor("scoreB", new ScoreB());
 
 
             // create the services

@@ -46,11 +46,11 @@ namespace Unit05.Game.Scripting
 
         private void HandleIncrement(Cast cast)
         {
-            CycleA cycleA = (CycleA)cast.GetFirstActor("cycleA");
-            CycleB cycleB = (CycleB)cast.GetFirstActor("cycleB");
+            Cycle cycleA = (Cycle)cast.GetFirstActor("cycleA");
+            Cycle cycleB = (Cycle)cast.GetFirstActor("cycleB");
 
-            ScoreA scoreA = (ScoreA)cast.GetFirstActor("scoreA");
-            ScoreB scoreB = (ScoreB)cast.GetFirstActor("scoreB");
+            //ScoreA scoreA = (ScoreA)cast.GetFirstActor("scoreA");
+            //ScoreB scoreB = (ScoreB)cast.GetFirstActor("scoreB");
 
             // private int increment = 1;
             cycleA.GrowTail(1);
@@ -72,11 +72,11 @@ namespace Unit05.Game.Scripting
         /// <param name="cast">The cast of actors.</param>
         private void HandleSegmentCollisions(Cast cast)
         {
-            CycleA cycleA = (CycleA)cast.GetFirstActor("cycleA");
+            Cycle cycleA = (Cycle)cast.GetFirstActor("cycleA");
             Actor headA = cycleA.GetHead();
             List<Actor> bodyA = cycleA.GetBody();
 
-            CycleB cycleB = (CycleB)cast.GetFirstActor("cycleB");
+            Cycle cycleB = (Cycle)cast.GetFirstActor("cycleB");
             Actor headB = cycleB.GetHead();
             List<Actor> bodyB = cycleB.GetBody();
 
@@ -111,12 +111,32 @@ namespace Unit05.Game.Scripting
 
         private void HandleGameOver(Cast cast)
         {
-            if (_isGameOver == true)
+            if (_isGameOver == false)
             {
-                CycleA cycleA = (CycleA)cast.GetFirstActor("cycleA");
+                Cycle cycleA = (Cycle)cast.GetFirstActor("cycleA");
                 List<Actor> segmentsA = cycleA.GetSegments();
                 //Food food = (Food)cast.GetFirstActor("food");
-                CycleB cycleB = (CycleB)cast.GetFirstActor("cycleB");
+                Cycle cycleB = (Cycle)cast.GetFirstActor("cycleB");
+                List<Actor> segmentsB = cycleB.GetSegments();
+                //Food food = (Food)cast.GetFirstActor("food");
+
+                foreach (Actor segment in segmentsA)
+                {
+                    segment.SetColor(Constants.LIGHTRED);
+                }      
+
+                foreach (Actor segment in segmentsB)
+                {
+                    segment.SetColor(Constants.LIGHTBLUE);
+                }       
+            }
+            
+            else if (_isGameOver == true)
+            {
+                Cycle cycleA = (Cycle)cast.GetFirstActor("cycleA");
+                List<Actor> segmentsA = cycleA.GetSegments();
+                //Food food = (Food)cast.GetFirstActor("food");
+                Cycle cycleB = (Cycle)cast.GetFirstActor("cycleB");
                 List<Actor> segmentsB = cycleB.GetSegments();
                 //Food food = (Food)cast.GetFirstActor("food");
 
@@ -134,12 +154,16 @@ namespace Unit05.Game.Scripting
                     message.SetPosition(position);
                     cast.AddActor("messages", message);       
 
-                foreach (Actor segment in segmentsB)
+                    foreach (Actor segment in segmentsB)
                     {
                         segment.SetColor(Constants.WHITE);
                     }
-
+                    foreach (Actor segment in segmentsA)
+                    {
+                        segment.SetColor(Constants.RED);
+                    } 
                 }
+
                 else if (winnerCycleB == true){
                     // create a "game over" message
                     int x = Constants.MAX_X / 8;
@@ -156,7 +180,11 @@ namespace Unit05.Game.Scripting
                     foreach (Actor segment in segmentsA)
                     {
                         segment.SetColor(Constants.WHITE);
-                    }              
+                    }     
+                    foreach (Actor segment in segmentsB)
+                    {
+                        segment.SetColor(Constants.BLUE);
+                    }            
                 }
 
 
