@@ -8,14 +8,14 @@ namespace Unit05.Game.Casting
     /// <para>A long limbless reptile.</para>
     /// <para>The responsibility of Snake is to move itself.</para>
     /// </summary>
-    public class CycleB : Actor
+    public class CycleBBB : Actor
     {
         private List<Actor> _segments = new List<Actor>();
 
         /// <summary>
         /// Constructs a new instance of a Snake.
         /// </summary>
-        public CycleB()
+        public CycleBBB()
         {
             PrepareBody();
         }

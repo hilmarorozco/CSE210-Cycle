@@ -77,10 +77,10 @@ namespace Unit05.Game.Scripting
                 _directionB = new Point(0, Constants.CELL_SIZE);
             }
 
-            CycleB cycleB = (CycleB)cast.GetFirstActor("cycleB");
+            Cycle cycleB = (Cycle)cast.GetFirstActor("cycleB");
             cycleB.TurnHead(_directionA);
 
-            CycleA cycleA = (CycleA)cast.GetFirstActor("cycleA");
+            Cycle cycleA = (Cycle)cast.GetFirstActor("cycleA");
             cycleA.TurnHead(_directionB);
 
         }

@@ -8,16 +8,16 @@ namespace Unit05.Game.Casting
     /// <para>A long limbless reptile.</para>
     /// <para>The responsibility of Snake is to move itself.</para>
     /// </summary>
-    public class CycleA : Actor
+    public class Cycle : Actor
     {
         private List<Actor> _segments = new List<Actor>();
 
         /// <summary>
         /// Constructs a new instance of a Snake.
         /// </summary>
-        public CycleA()
+        public Cycle()
         {
-            PrepareBody();
+            //PrepareBody(Point location, Color shade);
         }
 
         /// <summary>
@@ -59,12 +59,14 @@ namespace Unit05.Game.Casting
                 Point velocity = tail.GetVelocity();
                 Point offset = velocity.Reverse();
                 Point position = tail.GetPosition().Add(offset);
+                
+
 
                 Actor segment = new Actor();
                 segment.SetPosition(position);
                 segment.SetVelocity(velocity);
                 segment.SetText("#");
-                segment.SetColor(Constants.LIGHTRED);
+                //segment.SetColor();
                 _segments.Add(segment);
             }
         }
@@ -98,17 +100,19 @@ namespace Unit05.Game.Casting
         /// <summary>
         /// Prepares the snake body for moving.
         /// </summary>
-        private void PrepareBody()
+        public void PrepareBody(Point location, Color shade)
         {
-            int x = Constants.MAX_X / (-4);
-            int y = Constants.MAX_Y / 2;
+            int x = location.GetX();
+            int y = location.GetY();
 
             for (int i = 0; i < Constants.SNAKE_LENGTH; i++)
             {
                 Point position = new Point(x - i * Constants.CELL_SIZE, y);
                 Point velocity = new Point(1 * Constants.CELL_SIZE, 0);
                 string text = i == 0 ? "8" : "#";
-                Color color = i == 0 ? Constants.RED : Constants.LIGHTRED;
+                Color color = i == 0 ?  shade: shade;
+                //Color color = shade;
+
 
                 Actor segment = new Actor();
                 segment.SetPosition(position);
