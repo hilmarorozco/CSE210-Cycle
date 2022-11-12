@@ -100,7 +100,7 @@ namespace Unit05.Game.Casting
         /// <summary>
         /// Prepares the snake body for moving.
         /// </summary>
-        public void PrepareBody(Point location, Color shade)
+        public void PrepareBody(Point location)
         {
             int x = location.GetX();
             int y = location.GetY();
@@ -110,7 +110,7 @@ namespace Unit05.Game.Casting
                 Point position = new Point(x - i * Constants.CELL_SIZE, y);
                 Point velocity = new Point(1 * Constants.CELL_SIZE, 0);
                 string text = i == 0 ? "8" : "#";
-                Color color = i == 0 ?  shade: shade;
+                //Color color = i == 0 ?  shade: shade;
                 //Color color = shade;
 
 
@@ -118,7 +118,7 @@ namespace Unit05.Game.Casting
                 segment.SetPosition(position);
                 segment.SetVelocity(velocity);
                 segment.SetText(text);
-                segment.SetColor(color);
+                //segment.SetColor(color);
                 _segments.Add(segment);
             }
         }
